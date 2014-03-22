@@ -18,38 +18,41 @@ describe('eavesdrop', function () {
   describe('Registering listeners', function () {
 
     it('must specify 1+ events', function () {
-      expect(eavesdrop.bind(source, target)).to.throw(/event/);
+      expect(eavesdrop.bind(target, source)).to.throw(/events/);
     });
 
-    it('can register a single events', function () {
-      eavesdrop.call(source, target, 'name');
-      expect(target.listeners()).to.have.length(1);
+    it('can register a single event', function () {
+      eavesdrop.call(target, source, 'name');
+      expect(source.listeners('name')).to.have.length(1);
     });
 
     it('can register an array of events', function () {
-      eavesdrop.call(source, target, ['name1', 'name2']);
-      expect(target.listeners()).to.have.length(2);
+      eavesdrop.call(target, source, ['name1', 'name2']);
+      expect(source.listeners('name')).to.have.length(2);
     });
 
     it('can register variadic events', function () {
-      eavesdrop.call(source, target, 'name1', 'name2');
-      expect(target.listeners()).to.have.length(2);
+      eavesdrop.call(target, source, 'name1', 'name2');
+      expect(source.listeners('name')).to.have.length(2);
     });
 
-    it('returns the source for chaining', function () {
-      expect(eavesdrop.call(source, target, 'name')).to.equal(source);
+    it('returns the target for chaining', function () {
+      expect(eavesdrop.call(target, source, 'name')).to.equal(target);
     });
 
   });
 
   describe('Eavesdropping', function () {
 
-    it('emits all eavesdropped target events on the source', function () {
+    it('emits all eavesdropped source events on the target', function () {
       var spy = sinon.spy();
-      eavesdrop.call(source, target, 'name');
-      source.on('name', spy);
-      target.emit('name', 'a1', 'a2');
+      eavesdrop.call(target, source, 'name');
+      target.on('name', spy);
+      source.emit('name', 'a1');
+      source.emit('name', 'a1', 'a2', 'a3', 'a4');
       expect(spy).to.have.been.calledWith('a1', 'a2');
+      expect(spy).to.have.been.calledWith('a1', 'a2', 'a3', 'a4');
+      expect(spy).to.have.been.alwaysCalledOn(target);
     });
 
   });
