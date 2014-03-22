@@ -1,0 +1,28 @@
+{
+  "name": "eavesdrop",
+  "version": "0.0.0",
+  "description": "Listen in on EventEmitters",
+  "main": "eavesdrop.js",
+  "dependencies": {},
+  "devDependencies": {
+    "test-setup": "~0.0.1"
+  },
+  "scripts": {
+    "test": "mocha test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/valet-io/eavesdrop.git"
+  },
+  "keywords": [
+    "events",
+    "EventEmitter",
+    "proxy"
+  ],
+  "author": "Ben Drucker <bvdrucker@gmail.com> (http://www.bendrucker.me)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/valet-io/eavesdrop/issues"
+  },
+  "homepage": "https://github.com/valet-io/eavesdrop"
+}
