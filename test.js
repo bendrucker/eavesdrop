@@ -28,12 +28,14 @@ describe('eavesdrop', function () {
 
     it('can register an array of events', function () {
       eavesdrop.call(target, source, ['name1', 'name2']);
-      expect(source.listeners('name')).to.have.length(2);
+      expect(source.listeners('name1')).to.have.length(1);
+      expect(source.listeners('name2')).to.have.length(1);
     });
 
     it('can register variadic events', function () {
       eavesdrop.call(target, source, 'name1', 'name2');
-      expect(source.listeners('name')).to.have.length(2);
+      expect(source.listeners('name1')).to.have.length(1);
+      expect(source.listeners('name2')).to.have.length(1);
     });
 
     it('returns the target for chaining', function () {
@@ -50,9 +52,9 @@ describe('eavesdrop', function () {
       target.on('name', spy);
       source.emit('name', 'a1');
       source.emit('name', 'a1', 'a2', 'a3', 'a4');
-      expect(spy).to.have.been.calledWith('a1', 'a2');
+      expect(spy).to.have.been.calledWith('a1');
       expect(spy).to.have.been.calledWith('a1', 'a2', 'a3', 'a4');
-      expect(spy).to.have.been.alwaysCalledOn(target);
+      expect(spy).to.have.been.always.calledOn(target);
     });
 
   });
