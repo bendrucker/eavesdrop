@@ -38,6 +38,16 @@ describe('eavesdrop', function () {
       expect(source.listeners('name2')).to.have.length(1);
     });
 
+    it('can register using a custom config object', function () {
+      eavesdrop.call(target, source, {
+        events: 'name'
+      });
+      eavesdrop.call(target, source, {
+        events: ['name', 'name']
+      });
+      expect(source.listeners('name')).to.have.length(3);
+    });
+
     it('returns the target for chaining', function () {
       expect(eavesdrop.call(target, source, 'name')).to.equal(target);
     });
@@ -46,8 +56,12 @@ describe('eavesdrop', function () {
 
   describe('Eavesdropping', function () {
 
+    var spy;
+    beforeEach(function () {
+      spy = sinon.spy();
+    });
+
     it('emits all eavesdropped source events on the target', function () {
-      var spy = sinon.spy();
       eavesdrop.call(target, source, 'name');
       target.on('name', spy);
       source.emit('name', 'a1');
@@ -55,6 +69,17 @@ describe('eavesdrop', function () {
       expect(spy).to.have.been.calledWith('a1');
       expect(spy).to.have.been.calledWith('a1', 'a2', 'a3', 'a4');
       expect(spy).to.have.been.always.calledOn(target);
+    });
+
+    it('calls a custom trigger method if registered', function () {
+      eavesdrop.call(target, source, {
+        method: 'emitThen',
+        events: 'name'
+      });
+      target.emitThen = sinon.spy();
+      source.emit('name', 'a1');
+      expect(target.emitThen).to.have.been.calledWith('name', 'a1');
+      expect(target.emitThen).to.have.been.calledOn(target);
     });
 
   });
