@@ -1,0 +1,12 @@
+language: node_js
+node_js:
+- '0.11'
+- '0.10'
+deploy:
+  provider: npm
+  email: bvdrucker@gmail.com
+  api_key:
+    secure: m7cGASsuxdDko99ZbzspggIBUGag2q5bwZZEUkPhA67lfcmT4dbmLBaP3NSt2nNZOQ2E4/1xUyKKNCL2Qijqm5pwCOBN3cbGXrRAHRgIbYjOn5zejG9TMqwh+h6i3MbZu883QWGMtV7stbNMizw2BYpzOYXa3BRGllb5lm3uvJM=
+  on:
+    tags: true
+    repo: valet-io/eavesdrop
