@@ -1,4 +1,4 @@
-eavesdrop [![Build Status](https://travis-ci.org/valet-io/eavesdrop.svg)](https://travis-ci.org/valet-io/eavesdrop)
+eavesdrop [![Build Status](https://travis-ci.org/bendrucker/eavesdrop.svg)](https://travis-ci.org/bendrucker/eavesdrop)
 =========
 
 Listen on other EventEmitters.
