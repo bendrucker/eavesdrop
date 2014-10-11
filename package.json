@@ -5,7 +5,10 @@
   "main": "eavesdrop.js",
   "dependencies": {},
   "devDependencies": {
-    "test-setup": "valet-io/test-setup"
+    "chai": "1",
+    "mocha": "1",
+    "sinon": "1",
+    "sinon-chai": "2"
   },
   "scripts": {
     "test": "mocha test.js"

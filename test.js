@@ -1,8 +1,8 @@
 'use strict';
 
-require('test-setup');
-
 var EventEmitter = require('events').EventEmitter;
+var expect       = require('chai').use(require('sinon-chai')).expect;
+var sinon        = require('sinon');
 var eavesdrop    = require('./');
 
 /* globals describe:false, it:false, beforeEach:false, expect:false, sinon:false */
