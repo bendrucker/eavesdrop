@@ -1,6 +1,6 @@
 {
   "name": "eavesdrop",
-  "version": "0.1.2",
+  "version": "1.0.0",
   "description": "Listen in on EventEmitters",
   "main": "eavesdrop.js",
   "dependencies": {},
