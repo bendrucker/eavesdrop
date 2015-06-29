@@ -2,16 +2,16 @@
   "name": "eavesdrop",
   "version": "1.0.0",
   "description": "Listen in on EventEmitters",
-  "main": "eavesdrop.js",
-  "dependencies": {},
+  "main": "index.js",
+  "dependencies": {
+    "to-array": "~0.1.4"
+  },
   "devDependencies": {
-    "chai": "1",
-    "mocha": "1",
-    "sinon": "1",
-    "sinon-chai": "2"
+    "standard": "~4.4.1",
+    "tape": "~4.0.0"
   },
   "scripts": {
-    "test": "mocha test.js"
+    "test": "standard && tape test.js"
   },
   "repository": {
     "type": "git",
@@ -27,5 +27,8 @@
   "bugs": {
     "url": "https://github.com/bendrucker/eavesdrop/issues"
   },
-  "homepage": "https://github.com/bendrucker/eavesdrop"
+  "homepage": "https://github.com/bendrucker/eavesdrop",
+  "files": [
+    "index.js"
+  ]
 }
