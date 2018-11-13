@@ -1,4 +1,4 @@
-eavesdrop [![Build Status](https://travis-ci.org/bendrucker/eavesdrop.svg)](https://travis-ci.org/bendrucker/eavesdrop)
+eavesdrop [![Build Status](https://travis-ci.org/bendrucker/eavesdrop.svg)](https://travis-ci.org/bendrucker/eavesdrop) [![Greenkeeper badge](https://badges.greenkeeper.io/bendrucker/eavesdrop.svg)](https://greenkeeper.io/)
 =========
 
 > Listen on other EventEmitters
